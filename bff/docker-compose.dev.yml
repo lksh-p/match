@@ -16,25 +16,10 @@ services:
   website-app:
     build:
       context: ..
-      dockerfile: bff/website.dev.dockerfile
+      dockerfile: bff/dev.dockerfile
     container_name: website-app
     ports:
       - "80:80"
-    env_file:
-      - .env
-    depends_on:
-      - mongodb
-    networks:
-      - default
-      - match-shared-network
-    volumes:
-      - ./config.toml:/app/bff/config.toml:ro
-
-  telegrambot-app:
-    build:
-      context: ..
-      dockerfile: bff/telegrambot.dev.dockerfile
-    container_name: telegrambot-app
     env_file:
       - .env
     depends_on:
